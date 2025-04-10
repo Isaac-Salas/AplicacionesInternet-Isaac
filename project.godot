@@ -11,19 +11,33 @@ config_version=5
 [application]
 
 config/name="PaginaAI"
-run/main_scene="uid://bc87dnjb0spya"
+run/main_scene="uid://dn6hrkhlprf8g"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/bg_color=Color(0.0156863, 0.0470588, 0.0235294, 1)
+boot_splash/image="uid://15d5svyguohf"
 config/icon="res://icon.svg"
+run/canvas_textures/default_texture_filter=3
 
 [autoload]
 
 Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
 
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_width"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot-firebase/plugin.cfg", "res://addons/http-sse-client/plugin.cfg")
 
+[global_group]
+
+EditInfo=""
+Editor=""
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=3
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

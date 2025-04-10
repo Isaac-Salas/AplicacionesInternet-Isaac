@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3cqhu4c5e8ff"]
+
+[ext_resource type="Script" uid="uid://cbhpmqbs4imyx" path="res://Page/row_template.gd" id="1_nj501"]
+
+[node name="RowTemplate" type="HBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 2
+alignment = 1
+script = ExtResource("1_nj501")
+
+[node name="Products" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Products"
+horizontal_alignment = 1
+
+[node name="BuyingPrice" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buying Price"
+horizontal_alignment = 1
+
+[node name="Quantity" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Quantity"
+horizontal_alignment = 1
+
+[node name="Treshold" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Treshold Value"
+horizontal_alignment = 1
+
+[node name="Exp_Date" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Exp. Date"
+horizontal_alignment = 1
+
+[node name="Availability" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Availability"
+horizontal_alignment = 1
+
+[node name="Edit" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+disabled = true
+text = "Edit"
+flat = true
+
+[connection signal="button_down" from="Edit" to="." method="_on_edit_button_down"]
