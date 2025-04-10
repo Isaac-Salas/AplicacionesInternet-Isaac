@@ -61,3 +61,7 @@ func UpdateBoxes():
 	var unidicclean = Cleandoc.get(Keys[8])
 	var unidata = unidicclean.values()
 	Nomtext.text = str(unidata[0])
+
+
+func _on_add_pressed():
+	pass # Replace with function body.

@@ -1,7 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://kdhnx6ggvk2a"]
+[gd_scene load_steps=7 format=3 uid="uid://kdhnx6ggvk2a"]
 
 [ext_resource type="Script" uid="uid://dtd1pwph8ibjj" path="res://Page/edit_product.gd" id="1_p31yw"]
 [ext_resource type="Theme" uid="uid://57l5g8eevfsp" path="res://Theme.tres" id="2_1hkgm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p31yw"]
+bg_color = Color(0.877231, 0.439763, 0.440785, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1hkgm"]
+bg_color = Color(0.877231, 0.439763, 0.440785, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nnbkb"]
 bg_color = Color(0.745098, 0.862745, 0.498039, 1)
@@ -167,15 +173,15 @@ alignment = 1
 [node name="Discard" type="Button" parent="VBoxContainer/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Discard"
+theme_override_styles/hover = SubResource("StyleBoxFlat_p31yw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1hkgm")
+text = "Delete"
 
 [node name="Add" type="Button" parent="VBoxContainer/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/hover = SubResource("StyleBoxFlat_nnbkb")
 theme_override_styles/normal = SubResource("StyleBoxFlat_bcadx")
-text = "Add Product
-"
+text = "UpdateProduct"
 
-[connection signal="pressed" from="VBoxContainer/Buttons/Discard" to="." method="_on_discard_pressed"]
 [connection signal="pressed" from="VBoxContainer/Buttons/Add" to="." method="_on_add_pressed"]
