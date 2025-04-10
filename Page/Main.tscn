@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dn6hrkhlprf8g"]
+[gd_scene load_steps=25 format=3 uid="uid://dn6hrkhlprf8g"]
 
 [ext_resource type="Texture2D" uid="uid://x0i7edsebdga" path="res://icons/dashboard.png" id="1_74s6y"]
 [ext_resource type="Texture2D" uid="uid://bah1b7pp6cjfa" path="res://assets/Fondo.png" id="1_pxrnd"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c3cqhu4c5e8ff" path="res://Page/RowTemplate.tscn" id="12_rahsv"]
 [ext_resource type="Shader" uid="uid://c5ub0hlkttyt2" path="res://Page/CRT.gdshader" id="12_yjurd"]
 [ext_resource type="Texture2D" uid="uid://bth7cha0jg87f" path="res://assets/JellyDog-QR-Stylized.png" id="13_ipbuv"]
+[ext_resource type="Texture2D" uid="uid://dn4q5q15lpj0j" path="res://icons/magnifying-glass.png" id="13_qhmd3"]
 [ext_resource type="PackedScene" uid="uid://ci456f2gei03f" path="res://Page/Tabla1.tscn" id="13_x7m76"]
 [ext_resource type="PackedScene" uid="uid://xlen7w8bn8sa" path="res://Page/add_product.tscn" id="17_bcadx"]
 [ext_resource type="PackedScene" uid="uid://kdhnx6ggvk2a" path="res://Page/edit_product.tscn" id="19_i4b0s"]
@@ -234,18 +235,34 @@ offset_right = 40.0
 offset_bottom = 40.0
 alignment = 1
 
-[node name="Label" type="Label" parent="Barrita/InventarioContador/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Barrita/InventarioContador/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Barrita/InventarioContador/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "Overall Inventory"
+text = "Overall Inventory           "
+
+[node name="TextEdit" type="TextEdit" parent="Barrita/InventarioContador/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(400, 35)
+layout_mode = 2
+placeholder_text = "Search Product"
+
+[node name="Search" type="CheckBox" parent="Barrita/InventarioContador/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(62.09, 45)
+layout_mode = 2
+icon = ExtResource("13_qhmd3")
+expand_icon = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Barrita/InventarioContador/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 0
 
 [node name="Categories" type="Label" parent="Barrita/InventarioContador/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 2
 theme_override_colors/font_color = Color(0.392102, 0.582538, 1, 1)
 text = "Categories :"
 
@@ -424,6 +441,7 @@ metadata/_edit_lock_ = true
 [connection signal="pressed" from="ColorRect/JellyQR" to="." method="_on_jelly_qr_pressed"]
 [connection signal="pressed" from="ColorRect/Home" to="." method="_on_home_pressed"]
 [connection signal="pressed" from="ColorRect/Dashboard" to="." method="_on_dashboard_pressed"]
+[connection signal="toggled" from="Barrita/InventarioContador/VBoxContainer/HBoxContainer2/Search" to="Barrita/InventarioContador" method="_on_search_toggled"]
 [connection signal="pressed" from="Dash/Products/AddProduct" to="Dash/Products" method="_on_add_product_pressed"]
 [connection signal="close_requested" from="AddProduct" to="Dash/Products" method="_on_window_close_requested"]
 [connection signal="close_requested" from="Edit" to="Edit/EditProduct" method="_on_edit_close_requested"]
