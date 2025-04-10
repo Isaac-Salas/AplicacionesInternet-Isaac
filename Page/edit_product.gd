@@ -100,3 +100,10 @@ func updateDoc ():
 	#"Treshold",
 	#"Unit",
 #]
+
+
+func _on_discard_pressed():
+	var collection : FirestoreCollection = Firebase.Firestore.collection('Productos')
+	var was_deleted = await collection.delete(CurrentDoc)
+	if Table != null:
+		Table.refresh()

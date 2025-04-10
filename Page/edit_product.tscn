@@ -184,4 +184,5 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_nnbkb")
 theme_override_styles/normal = SubResource("StyleBoxFlat_bcadx")
 text = "UpdateProduct"
 
+[connection signal="pressed" from="VBoxContainer/Buttons/Discard" to="." method="_on_discard_pressed"]
 [connection signal="pressed" from="VBoxContainer/Buttons/Add" to="." method="_on_add_pressed"]
