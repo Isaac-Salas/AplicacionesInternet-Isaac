@@ -426,7 +426,8 @@ max_size = Vector2i(500, 500)
 content_scale_size = Vector2i(320, 0)
 theme = ExtResource("4_gniuo")
 
-[node name="EditProduct" parent="Edit" groups=["EditInfo"] instance=ExtResource("19_i4b0s")]
+[node name="EditProduct" parent="Edit" node_paths=PackedStringArray("Table") groups=["EditInfo"] instance=ExtResource("19_i4b0s")]
+Table = NodePath("../../Dash/Container/Tablaproducto")
 
 [node name="Shader" type="ColorRect" parent="Edit"]
 material = SubResource("ShaderMaterial_bcadx")

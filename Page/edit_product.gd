@@ -13,6 +13,10 @@ class_name EditProduct
 @onready var Exptext = $VBoxContainer/Exp_Date/TextEdit
 @onready var Treshtext = $VBoxContainer/Treshold/TextEdit
 
+@onready var DocKey : String
+
+@export var Table : TablaTemplate
+
 @export var Keys : Array = [
 	"Category",
 	"Exp_Date" ,
@@ -22,7 +26,7 @@ class_name EditProduct
 	"Price" ,
 	"Quantity",
 	"Treshold",
-	"Unit",
+	"Unit"
 ]
 
 func _on_edit_close_requested():
@@ -31,9 +35,9 @@ func _on_edit_close_requested():
 func UpdateBoxes():
 	#print(CurrentDoc)
 	var Keycount : int = 0
-	var DocId = CurrentDoc.doc_name
+	DocKey = CurrentDoc.doc_name
 	var Cleandoc = CurrentDoc.document
-	print(Cleandoc)
+	#print(Cleandoc)
 	var catdicclean = Cleandoc.get(Keys[0])
 	var catdata = catdicclean.values()
 	Cattext.text = str(catdata[0])
@@ -60,8 +64,39 @@ func UpdateBoxes():
 	Treshtext.text = str(tresdata[0])
 	var unidicclean = Cleandoc.get(Keys[8])
 	var unidata = unidicclean.values()
-	Nomtext.text = str(unidata[0])
+	Unittext.text = str(unidata[0])
 
 
 func _on_add_pressed():
-	pass # Replace with function body.
+	updateDoc()
+
+func updateDoc ():
+	var collection = Firebase.Firestore.collection('Productos')
+	var document = await collection.get_doc(DocKey)
+	var photo = item_list.get_selected_items()
+	document.add_or_update_field(Keys[0], Cattext.get_line(0))
+	document.add_or_update_field(Keys[1], Exptext.get_line(0))
+	document.add_or_update_field(Keys[2], IDtext.get_line(0))
+	document.add_or_update_field(Keys[3], Nomtext.get_line(0))
+	document.add_or_update_field(Keys[4], photo[0])
+	document.add_or_update_field(Keys[5], Pricetext.get_line(0))
+	document.add_or_update_field(Keys[6], Quanttext.get_line(0))
+	document.add_or_update_field(Keys[7], Treshtext.get_line(0))
+	document.add_or_update_field(Keys[8], Unittext.get_line(0))
+	var new_document = await collection.update(document)
+	print(new_document)
+	if Table != null:
+		Table.refresh()
+	
+#
+#@export var Keys : Array = [
+	#"Category",
+	#"Exp_Date" ,
+	#"ID" ,
+	#"Name", 
+	#"Photo",
+	#"Price" ,
+	#"Quantity",
+	#"Treshold",
+	#"Unit",
+#]
